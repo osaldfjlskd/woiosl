@@ -26,17 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    [manager GET:@"https://api.weibo.com/2/statuses/home_timeline.json?access_token=2.009TujxF0UDa7idb088651a2ndcTeE" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"JSON: %@", responseObject);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"Error: %@", error);
-//    }];
-    
-//    if (statuesArr != nil && statuesArr.count != 0) {
-//        return;
-//    }
+
     NSString *authToken = [[NSUserDefaults standardUserDefaults] objectForKey:USER_STORE_ACCESS_TOKEN];
     if (authToken == nil)
     {
@@ -46,10 +36,6 @@
             
             NSArray *dictArray =[data objectForKey:@"statuses"];
             
-//            for (NSDictionary *dict in dictArray) {
-//                WeiboFrame *weiboFrame = [[WeiboFrame alloc] init];
-//                
-//            }
             
             _weibos = dictArray;
             [self.tableView reloadData];
@@ -104,8 +90,6 @@
     WeiboCell *cell = [WeiboCell cellWithTableView:self.tableView];
     [cell setbasic:self.weibos[indexPath.row]];
     // 传入微博的数据和位置尺寸信息
-//    cell.weibodata = self.weibos[indexPath.row];
-//    cell.weiboFrame = self.weibos[indexPath.row];
     NSLog(@"%ld",(long)indexPath.row);
     return cell;
 }
@@ -164,7 +148,7 @@
 //        weiboFrame.weibodata  = self.weibos[indexPath.row];
         
         WeiboFrame *weiboFrame = [[WeiboFrame alloc] init];
-        [weiboFrame setWeibodata:self.weibos[indexPath.row]];
+        [weiboFrame initweibocellframe:self.weibos[indexPath.row]];
         NSLog(@"the weibo frame htight %f",weiboFrame.cellHeight);
     return weiboFrame.cellHeight;
 

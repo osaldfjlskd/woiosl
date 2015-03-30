@@ -38,5 +38,5 @@
 /** 一条微博cell的高度 */
 @property(nonatomic, assign, readonly) CGFloat cellHeight;
 
-
+- (void)initweibocellframe:(NSDictionary *)weibodata;
 @end

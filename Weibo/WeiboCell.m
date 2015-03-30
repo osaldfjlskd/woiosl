@@ -9,6 +9,7 @@
 #import "WeiboCell.h"
 #import "WeiboFrame.h"
 #import "Weibo.h"
+#import "AppDelegate.h"
 
 // 昵称字体
 #define NAME_FONT [UIFont systemFontOfSize:14]
@@ -20,22 +21,7 @@
 
 // 创建各个子控件的成员，用来分离数据赋值和尺寸、位置调整
 /** 头像 */
-@property(nonatomic, weak) UIImageView *iconView;
 
-/** 昵称 */
-@property(nonatomic, weak) UILabel *nameView;
-
-/** vip标志 */
-@property(nonatomic, weak) UIImageView *vipView;
-
-/** 博文 */
-@property(nonatomic, weak) UILabel *textView;
-
-/** 配图 */
-@property(nonatomic, weak) UIImageView *pictureView;
-
-//UIPageControl *pageControl
-@property(nonatomic, weak) UIPageControl *pageControl;
 
 @end
 
@@ -72,6 +58,8 @@
         cell = [[WeiboCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
     
+
+    
     return  cell;
 }
 
@@ -85,6 +73,8 @@
             self.iconView = [[UIImageView alloc] init];
             会被立即释放，不能正常赋值，下同
          */
+        
+        [AppDelegate storyBoradAutoLay:self.contentView];
 
         UIImageView *iconView = [[UIImageView alloc] init];
         [self.contentView addSubview:iconView];
@@ -134,7 +124,8 @@
 - (void)setbasic:(NSDictionary *)theweibodata{
     _weibodata = theweibodata;
     WeiboFrame *weiboframe = [[WeiboFrame alloc]init];
-    [weiboframe setWeibodata:_weibodata];
+//    [weiboframe setWeibodata:_weibodata];
+    [weiboframe initweibocellframe:_weibodata];
     _weiboFrame = weiboframe;
     
     // 1.设置数据
@@ -216,16 +207,16 @@
 - (void) calWeiboFrame {
     // 1.头像
     self.iconView.frame = self.weiboFrame.iconFrame;
-    NSLog(@" iconview frame width %f",self.iconView.frame.size.width);
+//    NSLog(@" iconview frame width %f",self.iconView.frame.size.width);
     // 2.昵称
     self.nameView.frame = self.weiboFrame.nameFrame;
-    NSLog(@" nameView frame width %f",self.nameView.frame.size.width);
+//    NSLog(@" nameView frame width %f",self.nameView.frame.size.width);
     // 3.vip标志
     self.vipView.frame = self.weiboFrame.vipFrame;
-        NSLog(@" nameView frame width %f",self.vipView.frame.size.width);
+//        NSLog(@" nameView frame width %f",self.vipView.frame.size.width);
     // 4.博文
     self.textView.frame = self.weiboFrame.textFrame;
-        NSLog(@" nameView frame width %f",self.textView.frame.size.width);
+//        NSLog(@" nameView frame width %f",self.textView.frame.size.width);
     // 5.配图
 //    if (self.weiboFrame.weibo.picture) {
     if (_picArray) {

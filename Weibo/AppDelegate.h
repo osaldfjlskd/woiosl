@@ -22,5 +22,9 @@
 @property (strong, nonatomic) NSString *wbtoken;
 @property (strong, nonatomic) NSString *wbCurrentUserID;
 
+@property float autoSizeScaleX;
+@property float autoSizeScaleY;
+
++ (void)storyBoradAutoLay:(UIView *)allView;
 @end
 

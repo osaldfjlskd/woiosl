@@ -18,7 +18,6 @@
 		E0BA6C731A31E2F2007DE1E6 /* WeiboCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0BA6C721A31E2F2007DE1E6 /* WeiboCell.m */; };
 		E0BA6C761A31E320007DE1E6 /* WeiboFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = E0BA6C751A31E320007DE1E6 /* WeiboFrame.m */; };
 		E0BA6C791A31E332007DE1E6 /* Weibo.m in Sources */ = {isa = PBXBuildFile; fileRef = E0BA6C781A31E332007DE1E6 /* Weibo.m */; };
-		EDA28C7F1ABDA5D800873B86 /* WeiboCell.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA28C7E1ABDA5D800873B86 /* WeiboCell.storyboard */; };
 		EDA28C951ABFBB0E00873B86 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA28C831ABFBB0E00873B86 /* AFHTTPRequestOperation.m */; };
 		EDA28C961ABFBB0E00873B86 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA28C851ABFBB0E00873B86 /* AFHTTPRequestOperationManager.m */; };
 		EDA28C971ABFBB0E00873B86 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA28C871ABFBB0E00873B86 /* AFHTTPSessionManager.m */; };
@@ -32,6 +31,7 @@
 		EDA28CAE1AC0500500873B86 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA28CA31AC0500500873B86 /* libWeiboSDK.a */; };
 		EDA28CAF1AC0500500873B86 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EDA28CAB1AC0500500873B86 /* WeiboSDK.bundle */; };
 		EDA28CB41AC166D400873B86 /* firstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA28CB31AC166D400873B86 /* firstViewController.m */; };
+		EDEE85A91ACA06E40037D525 /* WeiboCell.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDEE85A81ACA06E40037D525 /* WeiboCell.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,6 @@
 		E0BA6C771A31E332007DE1E6 /* Weibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weibo.h; sourceTree = "<group>"; };
 		E0BA6C781A31E332007DE1E6 /* Weibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weibo.m; sourceTree = "<group>"; };
 		E0BA6C7A1A31ED5C007DE1E6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		EDA28C7E1ABDA5D800873B86 /* WeiboCell.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WeiboCell.storyboard; sourceTree = "<group>"; };
 		EDA28C821ABFBB0E00873B86 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		EDA28C831ABFBB0E00873B86 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		EDA28C841ABFBB0E00873B86 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -102,6 +101,7 @@
 		EDA28CAD1AC0500500873B86 /* WeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboUser.h; sourceTree = "<group>"; };
 		EDA28CB21AC166D400873B86 /* firstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = firstViewController.h; sourceTree = "<group>"; };
 		EDA28CB31AC166D400873B86 /* firstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = firstViewController.m; sourceTree = "<group>"; };
+		EDEE85A81ACA06E40037D525 /* WeiboCell.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WeiboCell.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,7 +211,7 @@
 			children = (
 				E0BA6C711A31E2F2007DE1E6 /* WeiboCell.h */,
 				E0BA6C721A31E2F2007DE1E6 /* WeiboCell.m */,
-				EDA28C7E1ABDA5D800873B86 /* WeiboCell.storyboard */,
+				EDEE85A81ACA06E40037D525 /* WeiboCell.storyboard */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -374,7 +374,7 @@
 				E0BA6C4A1A30525D007DE1E6 /* Main.storyboard in Resources */,
 				E0BA6C4F1A30525D007DE1E6 /* LaunchScreen.xib in Resources */,
 				E0BA6C4C1A30525D007DE1E6 /* Images.xcassets in Resources */,
-				EDA28C7F1ABDA5D800873B86 /* WeiboCell.storyboard in Resources */,
+				EDEE85A91ACA06E40037D525 /* WeiboCell.storyboard in Resources */,
 				E0BA6C651A30A780007DE1E6 /* weibo.plist in Resources */,
 				EDA28CAF1AC0500500873B86 /* WeiboSDK.bundle in Resources */,
 			);

@@ -17,6 +17,27 @@
 @property (nonatomic, strong) NSDictionary *weibodata;
 @property (nonatomic, strong) NSArray *picArray;
 
+@property(nonatomic, weak) IBOutlet UIImageView *iconView;
+
+/** 昵称 */
+@property(nonatomic, weak) IBOutlet UILabel *nameView;
+
+/** vip标志 */
+@property(nonatomic, weak) IBOutlet UIImageView *vipView;
+
+/** 博文 */
+@property(nonatomic, weak) IBOutlet UILabel *textView;
+
+/** 配图 */
+@property(nonatomic, weak) IBOutlet UIImageView *pictureView;
+//点赞
+@property (retain, nonatomic) IBOutlet UILabel *countLB;
+@property (retain, nonatomic) IBOutlet UILabel *timeLB;
+@property (retain, nonatomic) IBOutlet UILabel *fromLB;
+
+//UIPageControl *pageControl
+@property(nonatomic, weak) UIPageControl *pageControl;
+
 // 自定义带有父控件tableView初始化方法
 + (instancetype) cellWithTableView:(UITableView *) tableView ;
 - (void)setbasic:(NSDictionary *)theweibodata;

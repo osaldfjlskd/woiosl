@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "global.h"
 
+#define ScreenHeight [[UIScreen mainScreen] bounds].size.height//获取屏幕高度，兼容性测试
+#define ScreenWidth [[UIScreen mainScreen] bounds].size.width//获取屏幕宽度，兼容性测试
+
 @interface AppDelegate ()
 
 @end
@@ -22,6 +25,16 @@
     
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kAppKey];
+    
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    
+    if(ScreenHeight > 480){
+        myDelegate.autoSizeScaleX = ScreenWidth/320;
+        myDelegate.autoSizeScaleY = ScreenHeight/568;
+    }else{
+        myDelegate.autoSizeScaleX = 1.0;
+        myDelegate.autoSizeScaleY = 1.0;
+    }
     
     return YES;
 }
@@ -111,6 +124,28 @@
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
     return [WeiboSDK handleOpenURL:url delegate:self ];
+}
+
+//storyBoard view自动适配
++ (void)storyBoradAutoLay:(UIView *)allView
+{
+    for (UIView *temp in allView.subviews) {
+        temp.frame = CGRectMake1(temp.frame.origin.x, temp.frame.origin.y, temp.frame.size.width, temp.frame.size.height);
+        for (UIView *temp1 in temp.subviews) {
+            temp1.frame = CGRectMake1(temp1.frame.origin.x, temp1.frame.origin.y, temp1.frame.size.width, temp1.frame.size.height);
+        }
+    }
+}
+
+//修改CGRectMake
+CG_INLINE CGRect
+CGRectMake1(CGFloat x, CGFloat y, CGFloat width, CGFloat height)
+{
+    AppDelegate *myDelegate = [[UIApplication sharedApplication] delegate];
+    CGRect rect;
+    rect.origin.x = x * myDelegate.autoSizeScaleX; rect.origin.y = y * myDelegate.autoSizeScaleY;
+    rect.size.width = width * myDelegate.autoSizeScaleX; rect.size.height = height * myDelegate.autoSizeScaleY;
+    return rect;
 }
 
 @end

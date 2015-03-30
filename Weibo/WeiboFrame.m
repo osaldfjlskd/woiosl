@@ -19,7 +19,7 @@
 @synthesize picArray = _picArray;
 #pragma mark - 加载数据
 // 加载数据，用以计算各个控件的位置、尺寸
-- (void)setWeibodata:(NSDictionary *)weibodata {
+- (void)initweibocellframe:(NSDictionary *)weibodata {
     _weibodata  = weibodata;
     
     // 间隙参数
@@ -37,9 +37,9 @@
     CGFloat iconY = padding;
     _iconFrame = CGRectMake(iconX, iconY, iconWidth, iconHeight);
     
-    NSDictionary* retweetedStatusDic = [self.weibodata objectForKey:@"retweeted_status"];
+    NSDictionary* retweetedStatusDic = [_weibodata objectForKey:@"retweeted_status"];
     if (retweetedStatusDic) {
-        _picArray = [[self.weibodata objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"];
+        _picArray = [[_weibodata objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"];
     }
     else
     {
@@ -67,7 +67,7 @@
     CGFloat textX = padding;
     CGFloat textY = CGRectGetMaxY(_iconFrame) + padding;
     _textFrame = CGRectMake(textX, textY, textSize.width, textSize.height);
-    NSLog(@"the text frame %f",textSize.width);
+    NSLog(@"the text frame %f textX %f textY %f",textSize.width,textX,textY);
     
     // 5.配图
     if (_picArray) {
@@ -81,6 +81,7 @@
         _pictureFrame = CGRectMake(pictureX, pictureY, pictureWidth, pictureHeight);
         
         _cellHeight = CGRectGetMaxY(_pictureFrame) + padding; //计算cell高度
+                    NSLog(@"%lu cellHeight is %f picturex is %f picturey is %f",(unsigned long)[_picArray count],_cellHeight,pictureX,pictureY);
         }
         
         if ([_picArray count]== 2 || [_picArray count] == 3)
@@ -92,6 +93,7 @@
             _pictureFrame = CGRectMake(pictureX, pictureY, pictureWidth, pictureHeight);
             
             _cellHeight = CGRectGetMaxY(_pictureFrame) + padding; //计算cell高度
+                    NSLog(@"%lu cellHeight is %f picturex is %f picturey is %f",(unsigned long)[_picArray count],_cellHeight,pictureX,pictureY);
         }
         
         if([_picArray count] ==4||[_picArray count] == 5|| [_picArray count]==6)
@@ -104,6 +106,7 @@
             
             _cellHeight = CGRectGetMaxY(_pictureFrame)*2; //计算cell高度
             _cellHeight = _cellHeight + padding;
+                    NSLog(@"%lu cellHeight is %f picturex is %f picturey is %f",(unsigned long)[_picArray count],_cellHeight,pictureX,pictureY);
         }
         if ([_picArray count] == 7 ||[_picArray count] ==8 ||[_picArray count] ==9) {
             CGFloat pictureWidth = screenwidth/4.2;
@@ -114,12 +117,16 @@
             
             _cellHeight = CGRectGetMaxY(_pictureFrame)*3; //计算cell高度
             _cellHeight = _cellHeight + padding;
+                    NSLog(@"%lu cellHeight is %f picturex is %f picturey is %f",(unsigned long)[_picArray count],_cellHeight,pictureX,pictureY);
+
         }
+
     }
     else {
         _cellHeight = CGRectGetMaxY(_textFrame) + padding;
     }
     
+
 //    return self;
 }
 
