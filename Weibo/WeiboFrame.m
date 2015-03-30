@@ -16,10 +16,11 @@
 
 @implementation WeiboFrame
 
+@synthesize picArray = _picArray;
 #pragma mark - 加载数据
 // 加载数据，用以计算各个控件的位置、尺寸
-- (void)setWeibo:(Weibo *)weibo {
-    _weibo = weibo;
+- (void)setWeibodata:(NSDictionary *)weibodata {
+    _weibodata  = weibodata;
     
     // 间隙参数
     CGFloat padding = 10;
@@ -36,9 +37,18 @@
     CGFloat iconY = padding;
     _iconFrame = CGRectMake(iconX, iconY, iconWidth, iconHeight);
     
+    NSDictionary* retweetedStatusDic = [self.weibodata objectForKey:@"retweeted_status"];
+    if (retweetedStatusDic) {
+        _picArray = [[self.weibodata objectForKey:@"retweeted_status"] objectForKey:@"pic_urls"];
+    }
+    else
+    {
+        _picArray = [_weibodata objectForKey:@"pic_urls"];
+    }
+    
     // 2.昵称
     // 计算昵称占用的size
-    CGSize nameSize = [self calTextSizeWithText:self.weibo.name font:TEXT_FONT maxSize:CGSizeMake(MAXFLOAT, MAXFLOAT)];
+    CGSize nameSize = [self calTextSizeWithText:[[_weibodata objectForKey:@"user"]objectForKey:@"name"] font:TEXT_FONT maxSize:CGSizeMake(MAXFLOAT, MAXFLOAT)];
     
     CGFloat nameX = CGRectGetMaxX(_iconFrame) + padding;
     CGFloat nameY = iconY + (iconHeight - nameSize.height) / 2;// 居中
@@ -53,15 +63,16 @@
     _vipFrame = CGRectMake(vipX, vipY, vipWith, vipHeight);
     
     // 4.博文
-    CGSize textSize = [self calTextSizeWithText:self.weibo.text font:TEXT_FONT maxSize:CGSizeMake(300, MAXFLOAT)];
+    CGSize textSize = [self calTextSizeWithText:[_weibodata objectForKey:@"text"] font:TEXT_FONT maxSize:CGSizeMake(300, MAXFLOAT)];
     CGFloat textX = padding;
     CGFloat textY = CGRectGetMaxY(_iconFrame) + padding;
     _textFrame = CGRectMake(textX, textY, textSize.width, textSize.height);
+    NSLog(@"the text frame %f",textSize.width);
     
     // 5.配图
-    if (self.weibo.picture) {
+    if (_picArray) {
         
-        if (1 == [self.weibo.picture count])
+        if (1 == [_picArray count])
         {
          CGFloat pictureWidth = screenwidth/2;
          CGFloat pictureHeight = screenwidth/2;
@@ -72,7 +83,7 @@
         _cellHeight = CGRectGetMaxY(_pictureFrame) + padding; //计算cell高度
         }
         
-        if ([self.weibo.picture count]== 2 || [self.weibo.picture count] == 3)
+        if ([_picArray count]== 2 || [_picArray count] == 3)
         {
             CGFloat pictureWidth = screenwidth/4.2;
             CGFloat pictureHeight = pictureWidth;
@@ -83,7 +94,7 @@
             _cellHeight = CGRectGetMaxY(_pictureFrame) + padding; //计算cell高度
         }
         
-        if([self.weibo.picture count] ==4||[self.weibo.picture count] == 5|| [self.weibo.picture count]==6)
+        if([_picArray count] ==4||[_picArray count] == 5|| [_picArray count]==6)
         {
             CGFloat pictureWidth = screenwidth/4.2;
             CGFloat pictureHeight = pictureWidth;
@@ -94,7 +105,7 @@
             _cellHeight = CGRectGetMaxY(_pictureFrame)*2; //计算cell高度
             _cellHeight = _cellHeight + padding;
         }
-        if ([self.weibo.picture count] == 7 ||[self.weibo.picture count] ==8 ||[self.weibo.picture count] ==9) {
+        if ([_picArray count] == 7 ||[_picArray count] ==8 ||[_picArray count] ==9) {
             CGFloat pictureWidth = screenwidth/4.2;
             CGFloat pictureHeight = pictureWidth;
             CGFloat pictureX = padding;
@@ -108,6 +119,8 @@
     else {
         _cellHeight = CGRectGetMaxY(_textFrame) + padding;
     }
+    
+//    return self;
 }
 
 // 使用自带方法计算一段文字占用的size

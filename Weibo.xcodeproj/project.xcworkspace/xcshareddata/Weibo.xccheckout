@@ -12,24 +12,20 @@
 	<dict>
 		<key>0A2D406C121362DB9FAD397C1E17CC8B6425C9BF</key>
 		<string>https://github.com/hellovoidworld/WeiboContentDemo.git</string>
-		<key>7EC9B13F24A028008843D64EF5977E55A4603152</key>
-		<string>https://github.com/osaldfjlskd/woiosl.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Weibo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0A2D406C121362DB9FAD397C1E17CC8B6425C9BF</key>
-		<string>../../../WeiboContentDemo</string>
-		<key>7EC9B13F24A028008843D64EF5977E55A4603152</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/osaldfjlskd/woiosl.git</string>
+	<string>https://github.com/hellovoidworld/WeiboContentDemo.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>7EC9B13F24A028008843D64EF5977E55A4603152</string>
+	<string>0A2D406C121362DB9FAD397C1E17CC8B6425C9BF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -39,14 +35,6 @@
 			<string>0A2D406C121362DB9FAD397C1E17CC8B6425C9BF</string>
 			<key>IDESourceControlWCCName</key>
 			<string>WeiboContentDemo</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>7EC9B13F24A028008843D64EF5977E55A4603152</string>
-			<key>IDESourceControlWCCName</key>
-			<string>woiosl</string>
 		</dict>
 	</array>
 </dict>

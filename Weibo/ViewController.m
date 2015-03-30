@@ -46,10 +46,10 @@
             
             NSArray *dictArray =[data objectForKey:@"statuses"];
             
-            for (NSDictionary *dict in dictArray) {
-                WeiboFrame *weiboFrame = [[WeiboFrame alloc] init];
-                
-            }
+//            for (NSDictionary *dict in dictArray) {
+//                WeiboFrame *weiboFrame = [[WeiboFrame alloc] init];
+//                
+//            }
             
             _weibos = dictArray;
             [self.tableView reloadData];
@@ -67,8 +67,8 @@
 //
 //        [WeiboSDK sendRequest:request];
     }
-    else
-    {
+//    else
+//    {
 //        [self getDataFromCD];
 //        
 //        if (!statuesArr || statuesArr.count == 0) {
@@ -78,7 +78,7 @@
 //        
 //        [manager getUserID];
 //        [manager getHOtTrendsDaily];
-    }
+//    }
     
     
 }
@@ -95,41 +95,41 @@
 
 #pragma mark -  数据源操作
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.weibos.count;
-    return 10;
+    return self.weibos.count;
+
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 传入tableView是为了使用cell缓存池
     WeiboCell *cell = [WeiboCell cellWithTableView:self.tableView];
-    
+    [cell setbasic:self.weibos[indexPath.row]];
     // 传入微博的数据和位置尺寸信息
-    cell.weibodata = self.weibos[indexPath.row];
-    cell.weiboFrame = self.weiboframe[indexPath.row];
+//    cell.weibodata = self.weibos[indexPath.row];
+//    cell.weiboFrame = self.weibos[indexPath.row];
     NSLog(@"%ld",(long)indexPath.row);
     return cell;
 }
 
 
-#pragma mark - 加载数据
+//#pragma mark - 加载数据
 // 延迟加载plist文件中的数据为微博数组
-- (NSArray *) weibos {
-    if (nil == _weibos) {
-        NSArray *dictArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weibo.plist" ofType:nil]];
-        
-        NSMutableArray *mdictArray = [NSMutableArray array];
-        for (NSDictionary *dict in dictArray) {
-            WeiboFrame *weiboFrame = [[WeiboFrame alloc] init];
-            Weibo *weibo = [Weibo weiboWithDictionary:dict];
-            
-            // 传入weibo模型数据到frame模型，内部保存数据，计算各个控件的位置、尺寸
-            weiboFrame.weibo = weibo;
-            
-            [mdictArray addObject:weiboFrame];
-        }
-        
-        _weiboframe = mdictArray;
-    }
+//- (NSArray *) weibos {
+//    if (nil == _weibos) {
+//        NSArray *dictArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weibo.plist" ofType:nil]];
+//        
+//        NSMutableArray *mdictArray = [NSMutableArray array];
+//        for (NSDictionary *dict in dictArray) {
+//            WeiboFrame *weiboFrame = [[WeiboFrame alloc] init];
+//            Weibo *weibo = [Weibo weiboWithDictionary:dict];
+//            
+//            // 传入weibo模型数据到frame模型，内部保存数据，计算各个控件的位置、尺寸
+//            weiboFrame.weibo = weibo;
+//            
+//            [mdictArray addObject:weiboFrame];
+//        }
+//        
+//        _weiboframe = mdictArray;
+//    }
     
 //
 //        [[Networkclient sharedInstance] getweibodata:^(NSDictionary *data) {
@@ -147,21 +147,29 @@
 //        } failureBlock:^(NSError *error) {
 //            NSLog(@"Error: %@", error);
 //        }];
-    
-
-    
-    return _weibos;
-}
+//    
+//
+//    
+//    return _weibos;
+//}
 
 
 #pragma mark - 代理操作
 // 动态调整每个cell的高度
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WeiboFrame *weiboFrame = self.weibos[indexPath.row];
-//    if (weiboFrame == nil) {
-        return 300.0;
-//    }
-//    return weiboFrame.cellHeight;
+    if(nil != self.weibos)
+    {
+//        WeiboFrame *weiboFrame = [WeiboFrame setWeibodata:self.weibos[indexPath.row]];
+//        WeiboFrame *weiboFrame = [[WeiboFrame alloc] setWeibodata:self.weibos[indexPath.row]];
+//        weiboFrame.weibodata  = self.weibos[indexPath.row];
+        
+        WeiboFrame *weiboFrame = [[WeiboFrame alloc] init];
+        [weiboFrame setWeibodata:self.weibos[indexPath.row]];
+        NSLog(@"the weibo frame htight %f",weiboFrame.cellHeight);
+    return weiboFrame.cellHeight;
+
+    }
+    return 300.0;
 }
 
 @end

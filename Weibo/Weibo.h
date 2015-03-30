@@ -27,6 +27,16 @@
 /** 配图 */
 @property(nonatomic, copy) NSArray *picture;
 
+//pinglun
+
+@property (nonatomic, assign) NSInteger zhuannum;
+@property (nonatomic, assign) NSInteger commentnum;
+@property (nonatomic, assign) NSInteger zannum;
+@property (nonatomic, copy) NSString *time;
+@property (nonatomic, copy) NSString *phonetype;
+@property (nonatomic, copy) NSString *position;
+
+
 
 #pragma mark - 自定义初始化方法
 /** 使用字典赋值成员 */

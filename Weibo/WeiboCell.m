@@ -59,7 +59,7 @@
 
 #pragma mark - 初始化
 // 自定义带有父控件tableView初始化方法
-+ (instancetype) cellWithTableView:(UITableView *) tableView {
++ (instancetype) cellWithTableView:(UITableView *) tableView{
     static NSString *ID = @"weibo";
     
     // 从缓存池寻找
@@ -117,14 +117,25 @@
         
         
     }
+//    WeiboFrame *weiboframe = [[WeiboFrame alloc]init];
+//    [weiboframe setWeibodata:_weibodata];
+//    _weiboFrame = weiboframe;
+//    
+//    [self calWeiboData];
+//    
+//    // 2.设置尺寸、位置
+//    [self calWeiboFrame];
     
     return self;
 }
 
 #pragma mark - 数据加载
 // 加载数据的时候设置数据和尺寸、位置
-- (void)setWeiboFrame:(WeiboFrame *)weiboFrame {
-    _weiboFrame = weiboFrame;
+- (void)setbasic:(NSDictionary *)theweibodata{
+    _weibodata = theweibodata;
+    WeiboFrame *weiboframe = [[WeiboFrame alloc]init];
+    [weiboframe setWeibodata:_weibodata];
+    _weiboFrame = weiboframe;
     
     // 1.设置数据
     [self calWeiboData];
@@ -148,10 +159,10 @@
     
     // 1.头像
     self.iconView.image = [UIImage imageNamed:[[self.weibodata objectForKey:@"user"] objectForKey:@"profile_image_url"]];
-    
+    NSLog(@"the use profile image%@",[[self.weibodata objectForKey:@"user"] objectForKey:@"profile_image_url"]);
     // 2.昵称
     self.nameView.text = [[self.weibodata objectForKey:@"user"] objectForKey:@"name"];
-    
+    NSLog(@"the name of user%@",[[self.weibodata objectForKey:@"user"] objectForKey:@"name"]);
     // 3.vip标志
 //    if (weibo.vip) {
 //        self.vipView.hidden = NO;
@@ -163,7 +174,7 @@
     // 4.博文
     self.textView.text = [self.weibodata objectForKey:@"text"];
 
-    NSLog(@"%@",self.textView.text);
+    NSLog(@"weibo text %@",self.textView.text);
 //    // 5.配图
     
 
@@ -205,26 +216,28 @@
 - (void) calWeiboFrame {
     // 1.头像
     self.iconView.frame = self.weiboFrame.iconFrame;
-    
+    NSLog(@" iconview frame width %f",self.iconView.frame.size.width);
     // 2.昵称
     self.nameView.frame = self.weiboFrame.nameFrame;
-    
+    NSLog(@" nameView frame width %f",self.nameView.frame.size.width);
     // 3.vip标志
     self.vipView.frame = self.weiboFrame.vipFrame;
-    
+        NSLog(@" nameView frame width %f",self.vipView.frame.size.width);
     // 4.博文
     self.textView.frame = self.weiboFrame.textFrame;
-    
+        NSLog(@" nameView frame width %f",self.textView.frame.size.width);
     // 5.配图
-    if (self.weiboFrame.weibo.picture) {
-        if(1 ==[self.weiboFrame.weibo.picture count])
-        {
-            self.pictureView.frame = self.weiboFrame.pictureFrame;
-        }
-        if ([self.weiboFrame.weibo.picture count] == 2 || [self.weiboFrame.weibo.picture count] == 3) {
-            
-        }
+//    if (self.weiboFrame.weibo.picture) {
+    if (_picArray) {
+//        if(1 ==[self.weiboFrame.weibo.picture count])
+//        {
+//            self.pictureView.frame = self.weiboFrame.pictureFrame;
+//        }
+//        if ([self.weiboFrame.weibo.picture count] == 2 || [self.weiboFrame.weibo.picture count] == 3) {
+//            
+//        }
         //宽 640 ，图片150，间隙 25，10
+        self.pictureView.frame = self.weiboFrame.pictureFrame;
         
     }
 }
@@ -280,7 +293,7 @@
 
 //单击图片之后响应的
 -(void) tap: (UITapGestureRecognizer*)sender{
-    NSLog(@"%ld",(long)sender.view.tag);//根据手势来取得当前点击的view
+    NSLog(@"you tag the pic %ld",(long)sender.view.tag);//根据手势来取得当前点击的view
     
 }
 

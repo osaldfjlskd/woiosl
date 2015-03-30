@@ -17,6 +17,9 @@
 // 微博数据
 @property(nonatomic, strong) Weibo *weibo;
 
+@property(nonatomic, strong) NSDictionary *weibodata;
+
+@property (nonatomic, strong) NSArray *picArray;
 /** 头像 */
 @property(nonatomic, assign, readonly) CGRect iconFrame;
 

@@ -18,6 +18,6 @@
 @property (nonatomic, strong) NSArray *picArray;
 
 // 自定义带有父控件tableView初始化方法
-+ (instancetype) cellWithTableView:(UITableView *) tableView;
-
++ (instancetype) cellWithTableView:(UITableView *) tableView ;
+- (void)setbasic:(NSDictionary *)theweibodata;
 @end
