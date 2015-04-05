@@ -22,6 +22,9 @@
 /** 昵称 */
 @property(nonatomic, weak) IBOutlet UILabel *nameView;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *timephoneLable;
+
 /** vip标志 */
 @property(nonatomic, weak) IBOutlet UIImageView *vipView;
 
@@ -34,6 +37,12 @@
 @property (retain, nonatomic) IBOutlet UILabel *countLB;
 @property (retain, nonatomic) IBOutlet UILabel *timeLB;
 @property (retain, nonatomic) IBOutlet UILabel *fromLB;
+
+
+
+@property (retain, nonatomic) IBOutlet UILabel *zhuanfaLable;
+@property (weak, nonatomic) IBOutlet UILabel *commentLable;
+@property (weak, nonatomic) IBOutlet UILabel *zanLable;
 
 //UIPageControl *pageControl
 @property(nonatomic, weak) UIPageControl *pageControl;

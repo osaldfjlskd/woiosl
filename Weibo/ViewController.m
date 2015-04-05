@@ -81,7 +81,8 @@
 
 #pragma mark -  数据源操作
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.weibos.count;
+//    return self.weibos.count;
+    return 1;
 
 }
 
